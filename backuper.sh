@@ -5,6 +5,7 @@ set -euo pipefail
 DB_FILE="db_list.json"
 USER="$(whoami)"
 CNF_PATH="/home/${USER}/.backup.cnf"
+BACKUPS_PATH="/home/${USER}/db_backups"
 DATESTAMP="$(date +%F)"
 
 log() {
@@ -53,7 +54,7 @@ backup_database() {
     local port="$1"
     local host="$2"
     local db_name="$3"
-    local backup_file="${db_name}_${DATESTAMP}.sql.gz"
+    local backup_file="${BACKUPS_PATH}/${db_name}_${DATESTAMP}.sql.gz"
 
     log "Backing up database: $db_name on host: $host at port: $port..."
 
