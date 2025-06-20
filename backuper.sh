@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-DB_FILE="db_list.json"
+DB_FILE="./db_list.json"
 USER="$(whoami)"
 CNF_PATH="/home/${USER}/.backup.cnf"
 BACKUPS_PATH="/home/${USER}/db_backups"
