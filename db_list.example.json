@@ -1,0 +1,7 @@
+[
+  {
+    "host": "host",
+    "db_name": "db_name",
+    "port": 3306
+  }
+]
