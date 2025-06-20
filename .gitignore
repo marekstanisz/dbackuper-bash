@@ -2,3 +2,4 @@ db_list.json
 *.sql.gz
 *.sql
 .DS_Store
+*.log
