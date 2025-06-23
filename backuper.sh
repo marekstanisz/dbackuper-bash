@@ -3,6 +3,24 @@
 set -euo pipefail
 
 DB_FILE="./db_list.json"
+
+# Parse optional --db-file argument
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --db-file)
+            DB_FILE="$2"
+            shift 2
+            ;;
+        -*)
+            echo "[ERROR] Unknown option: $1"
+            exit 1
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
 USER="$(whoami)"
 CNF_PATH="/home/${USER}/.backup.cnf"
 BACKUPS_PATH="/home/${USER}/db_backups"
@@ -23,6 +41,8 @@ abort() {
 
 # Load and validate db_list.json
 load_access_info() {
+    log "Using DB file: $DB_FILE"
+
     if [[ ! -f "$DB_FILE" ]]; then
         abort "db_list.json not found."
     fi
